@@ -12,8 +12,8 @@ namespace ConsoleApp_ATM
         {
             while (true)
             {
-                Console.WriteLine("欢迎来到 to ATM System");
-                Console.WriteLine("1 Login 2 Create Account");
+                Console.WriteLine("欢迎来到2015级 ATM 系统");
+                Console.WriteLine("1 登录 2 开户");
                 string input = Console.ReadLine();
                 int choice = 0;
 
@@ -40,7 +40,7 @@ namespace ConsoleApp_ATM
 
         private static void Create()
         {
-            Console.WriteLine("Please input your new account");
+            Console.WriteLine("请输入新账号");
             Console.ReadLine();
         }
 
