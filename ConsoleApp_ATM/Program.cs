@@ -5,6 +5,7 @@ namespace ConsoleApp_ATM
 {
     class Program
     {
+        //测试一下github
         //存储当前登录用户
        static Account currentUser;
         //使用泛型列表来存储多用户
