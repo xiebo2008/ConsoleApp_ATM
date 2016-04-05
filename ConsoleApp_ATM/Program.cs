@@ -14,48 +14,71 @@ namespace ConsoleApp_ATM
 
         static void Main()
         {
-            //初始化用户
+            //初始化一系列账号
             Init();
+            //循环开始
             while (true)
             {
-                Console.WriteLine("欢迎来到九职大2015级 ATM 系统");
-                Console.WriteLine("1 登录 2 开户");
+                // 显示一级菜单 1登录 2 开户
+                // 接受用户输入 ，判断用户选择
+                // 如果是1， 进入Login() ， 如果是2 进入CreateAccount()
+                Console.Write("1登录 2 开户");
                 string input = Console.ReadLine();
-                int choice = 0;
-                bool result = int.TryParse(input, out choice);
-                if (result)
+                switch (input)
                 {
-                    switch (choice)
-                    {
-                        case 1:
-                            Login();
-                            break;
-                        case 2:
-                            Create();
-                            break;
-                        default: break;
-                    }
+                    case "1":
+                        Login();
+                        break;
+                    case "2":
+                        CreateAccount();
+                        break;
+
                 }
+            //循环结束
             }
+
+             
+        }
+        static void Login()
+        {
+            Console.WriteLine("进入登录界面");
+            Console.ReadLine();
+
+            // 登录函数的实现
+            //1 接受输入的用户名和密码
+            //2 和 已开户用户链表进行比对
+            //如果验证成功，进入二级菜单函数
         }
 
+        static void CreateAccount()
+        {
+            Console.WriteLine("进入开户界面");
+            Console.ReadLine();
+
+            //开户函数
+            //1 接受用户名和密码的输入
+            //2 验证该用户名是否已经存在，如果存在回到第一步，如果不存在进行存储
+            //3回到一级菜单
+        }
+
+
+
         //初始化函数， 在程序的一开始进行调用
-        private static void Init()
+        static void Init()
         {
            
-            Account a1 = new Account();
+            Account a1 ;
             a1.username = "xiebo";
             a1.password = "123";
             a1.balance = 100;
             lstAccount.Add( a1);
 
-            Account a2 = new Account();
+            Account a2 ;
             a2.username = "xiexie";
             a2.password = "123";
             a2.balance = 200;
-            lstAccount.Add( a2);
+           lstAccount.Add( a2);
             Console.WriteLine("初始化结束，已初始化{0}个用户",lstAccount.Count);
-            
 
         }
         /// <summary>
@@ -106,7 +129,7 @@ namespace ConsoleApp_ATM
         }
 
 
-        static void Login()
+       /* static void Login()
         {
             Console.WriteLine("请输入账号");
             string username = Console.ReadLine();
@@ -129,7 +152,7 @@ namespace ConsoleApp_ATM
             
 
         }
-
+        */
         private static void GotoSecondMenu()
         {
 
