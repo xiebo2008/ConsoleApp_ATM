@@ -17,6 +17,8 @@ namespace ConsoleApp_ATM
             //初始化一系列账号
             Init();
             //循环开始
+
+            /*
             while (true)
             {
                 // 显示一级菜单 1登录 2 开户
@@ -36,7 +38,7 @@ namespace ConsoleApp_ATM
                 }
             //循环结束
             }
-
+            */
              
         }
         static void Login()
@@ -66,19 +68,21 @@ namespace ConsoleApp_ATM
         //初始化函数， 在程序的一开始进行调用
         static void Init()
         {
-           
-            Account a1 ;
-            a1.username = "xiebo";
-            a1.password = "123";
-            a1.balance = 100;
-            lstAccount.Add( a1);
+            
+            Account a1 = new Account() ;
+          //  Account a2 = new Account();
+          //  Account a3 = new Account();
+            Console.WriteLine("内存中的Account实例对象个数为{0}",Account.Count);
+            Account a2 = new Account("xiebo","123",100);
+             
+         //   lstAccount.Add(a1);
 
-            Account a2 ;
-            a2.username = "xiexie";
-            a2.password = "123";
-            a2.balance = 200;
-           lstAccount.Add( a2);
-            Console.WriteLine("初始化结束，已初始化{0}个用户",lstAccount.Count);
+            // Account a2 = new Account() ;
+            // a2.username = "xiexie";
+            // a2.password = "123";
+            // a2.balance = 200;
+            //lstAccount.Add( a2);
+            // Console.WriteLine("初始化结束，已初始化{0}个用户",lstAccount.Count);
 
         }
         /// <summary>
