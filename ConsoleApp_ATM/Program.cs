@@ -1,11 +1,12 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using ThirdPartLib;
 namespace ConsoleApp_ATM
 {
     class Program
     {
-        //测试一下github
+        //测试一下github 
         //存储当前登录用户
        static Account currentUser;
         //使用泛型列表来存储多用户
@@ -18,12 +19,12 @@ namespace ConsoleApp_ATM
             Init();
             //循环开始
 
-            /*
+           
             while (true)
             {
-                // 显示一级菜单 1登录 2 开户
-                // 接受用户输入 ，判断用户选择
-                // 如果是1， 进入Login() ， 如果是2 进入CreateAccount()
+                 //显示一级菜单 1登录 2 开户
+                 //接受用户输入 ，判断用户选择
+                 //如果是1， 进入Login() ， 如果是2 进入CreateAccount()
                 Console.Write("1登录 2 开户");
                 string input = Console.ReadLine();
                 switch (input)
@@ -36,21 +37,12 @@ namespace ConsoleApp_ATM
                         break;
 
                 }
-            //循环结束
+          //  循环结束
             }
-            */
              
-        }
-        static void Login()
-        {
-            Console.WriteLine("进入登录界面");
-            Console.ReadLine();
 
-            // 登录函数的实现
-            //1 接受输入的用户名和密码
-            //2 和 已开户用户链表进行比对
-            //如果验证成功，进入二级菜单函数
         }
+       
 
         static void CreateAccount()
         {
@@ -69,20 +61,17 @@ namespace ConsoleApp_ATM
         static void Init()
         {
             
-            Account a1 = new Account() ;
-          //  Account a2 = new Account();
-          //  Account a3 = new Account();
-            Console.WriteLine("内存中的Account实例对象个数为{0}",Account.Count);
-            Account a2 = new Account("xiebo","123",100);
+           
+           Account a1 = new Account("xiebo","123",100);
              
-         //   lstAccount.Add(a1);
+            lstAccount.Add(a1);
 
-            // Account a2 = new Account() ;
-            // a2.username = "xiexie";
-            // a2.password = "123";
-            // a2.balance = 200;
-            //lstAccount.Add( a2);
-            // Console.WriteLine("初始化结束，已初始化{0}个用户",lstAccount.Count);
+            Account a2 = new Account();
+            a2.username = "xiexie";
+            a2.password = "123";
+            a2.Balance = 200;
+            lstAccount.Add(a2);
+            Console.WriteLine("初始化结束，已初始化{0}个用户", lstAccount.Count);
 
         }
         /// <summary>
@@ -116,7 +105,7 @@ namespace ConsoleApp_ATM
                     Account a = new Account();
                     a.username = username;
                     a.password = password;
-                    a.balance = 100;
+                    a.Balance = 100;
                     lstAccount.Add(a);
                     Console.WriteLine("开户成功.....按任意键退出");
                     Console.ReadLine();
@@ -133,7 +122,7 @@ namespace ConsoleApp_ATM
         }
 
 
-       /* static void Login()
+       static void Login()
         {
             Console.WriteLine("请输入账号");
             string username = Console.ReadLine();
@@ -145,7 +134,9 @@ namespace ConsoleApp_ATM
                 if (username == lstAccount[index].username && password == lstAccount[index].password)
                 {
                     Console.WriteLine("登录成功");
-                    Console.WriteLine("您的余额是{0}", lstAccount[index].balance);
+                    Console.WriteLine("您的余额是{0}", lstAccount[index].Balance);
+                    //指定当前用户
+                    currentUser = lstAccount[index];
                     isValid = true;
                     GotoSecondMenu();
                 }
@@ -156,12 +147,37 @@ namespace ConsoleApp_ATM
             
 
         }
-        */
+       
         private static void GotoSecondMenu()
         {
 
             Console.WriteLine("1存款 2取款 3转账 4查流水 5回到上级");
+            //省略输入过程
+            int choice = 1;
+            switch (choice)
+            {
+                case 1: Save();
+                    break;
+                default: break;
+
+            }
+
+        }
+
+        private static void Save()
+        {
+            Console.WriteLine("你要存入100元");
             Console.ReadLine();
+            int money = 100000;
+           
+            currentUser.Balance = currentUser.Balance+money;
+
+
+
+
+            Console.WriteLine("你的余额是{0}", currentUser.Balance);
+            Console.ReadLine();
+
         }
     }
 }
